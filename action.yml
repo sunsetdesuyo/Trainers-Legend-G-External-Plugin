@@ -1,0 +1,7 @@
+name: "Example"
+description: "Receives file and generates output"
+inputs:
+  Proceed and download? [Yes]/No :
+    description: "down"
+    required: true
+    default: "yes"
