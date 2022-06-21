@@ -1,0 +1,23 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: windows 2019
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: install
+      run: |
+        pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install nuitka
+    - name: make
+      run: |
+        nuitka --standalone --windows-disable-console --windows-icon-from-ico=jio.ico --onefile --plugin-enable=pyqt5 --include-qt-plugins=sensible,styles main.py
