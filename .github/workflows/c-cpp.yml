@@ -13,6 +13,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.8"
     - name: install
       run: |
         pip install --upgrade pip
@@ -21,3 +25,9 @@ jobs:
     - name: make
       run: |
         nuitka --standalone --windows-disable-console --windows-icon-from-ico=jio.ico --onefile --plugin-enable=pyqt5 --include-qt-plugins=sensible,styles main.py
+        mkdir mbuild
+        cp main.exe ./mbuild/legend_g_plugin.exe
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Trainers-Legend-G-External-Plugin
+        path: package
