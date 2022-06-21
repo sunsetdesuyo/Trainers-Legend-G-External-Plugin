@@ -21,7 +21,7 @@ jobs:
       run: |
         pip install --upgrade pip
         pip install -r requirements.txt
-        pip install nuitka
+        pip install nuitka==0.7.7
     - name: make
       run: |
         nuitka --standalone --windows-disable-console --windows-icon-from-ico=jio.ico --onefile --plugin-enable=pyqt5 --include-qt-plugins=sensible,styles main.py
